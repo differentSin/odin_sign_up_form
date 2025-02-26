@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantra Art: Sign In</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="background">
+        
+        <div class="back-flex">
+            <div></div> <!-- for easier align -->
+            <div id="one">
+                
+                <span id="title">VANTRA</span>
+            </div>
+            <div id="two">Photo by Didssh on Unsplash</div>
+        </div>
+    </div>
+        <!-- <img src="img/psychedelic_turtle.png" alt="psychdelic turtle logo"> --> 
+    <div class="login">
+        <div class="login-content">
+            <div id="hello">This is a demo for an exciting website:
+            Your own personal apartment management application.
+            </div>
+            <br>
+            <div>Let's get started!</div>
+        </div>
+    </div>
+
+    <form id=form action="">
+        <table>
+            <caption><strong>Sign up</strong></caption>
+            <tr>
+                <td><label for="first-name">First Name</label></td>
+                <td><label for="last-name">Last Name</label></td>
+            </tr>
+            <tr>
+                <td id="first-name-cell">
+                    <input id="first-name" type="text" name="first-name" size="30">
+                    <div class="relative">
+                        <div id="error-tooltip1" class="error-tooltip">*This field is required</div>
+                    </div>
+                </td>
+                
+                <td>
+                    <input id="last-name" type="text" name="last-name" size="30">
+                    <div class="relative">
+                        <div id="error-tooltip2" class="error-tooltip">*This field is required</div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td><label for="email">Email</label></td>
+                <td><label for="phone">Phone</label></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input id="email" type="email" name="email" size="30">
+                    <div class="relative">
+                        <div id="error-tooltip3" class="error-tooltip">*This field is required</div>
+                    </div>
+                </td>
+                <td>
+                    <input id="phone" type="tel" name="phone" size="30">
+                    <div class="relative">
+                        <div id="error-tooltip4" class="error-tooltip">*This field is required</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><label for="confirm-password">Confirm Password</label></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input id="password" type="password" name="password" minlength="6" size="30" placeholder="Min length: 6, with a special character" required>
+                    <div class="relative">
+                        <div id="error-tooltip5" class="error-tooltip">*This field is required</div>
+                    </div>
+                </td>
+
+                <td id="last-row-form">
+                    <input id="confirm-password" type="password" name="confirm-password" size="30" required>
+                    <div class="relative">
+                        <div id="error-tooltip6" class="error-tooltip">*This field is required</div>
+                    </div>
+                </td>
+
+                <td>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        👓
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="later-half">
+        <button id="create-account" form="form" type="submit">Create Account</button>
+        <p>Already have an account? <a href="">Log in</a></p>
+    </div>
+    
+    <footer>
+        <div>@Anthony Tran 2025</div>
+    </footer>
+</body>
+
+<script>
+    // make the border of the inputs red if missing value
+    // and make it blue on focus
+    let inputFields = document.querySelectorAll("input");
+    inputFields.forEach(function(input) {
+        // (phone) will return the id
+        let phone = document.getElementById("phone");
+        if (phone) {
+            return;
+        }
+        input.addEventListener("focus", function () {
+            this.style.border = "2px solid blue";
+        });
+
+        input.addEventListener("blur", function () {
+            if (input.value.trim() === "") {
+                input.style.border = "2px solid rgba(255, 0, 0, 0.3)";
+            } else {
+                input.style.border = "1px solid rgba(0, 0, 0, 0.197)";
+            }
+        })
+    });
+
+    // first-name event handler
+    let firstName = document.getElementById("first-name");
+    let errorTooltip1 = document.getElementById("error-tooltip1");
+    firstName.addEventListener("blur", function () {
+        if (firstName.value.trim() === "") {
+            firstName.style.border = "2px solid rgba(255, 0, 0, 0.3)";
+            errorTooltip1.textContent = "*This field is required";
+            errorTooltip1.style.display = "inline";
+
+        // if the field contains a number, error message pop up 
+        // syntax is /\d/.test(variable)
+        } else if (/\d/.test(firstName.value.trim())) { 
+            firstName.style.border = "2px solid orange";
+            errorTooltip1.textContent = "Name cannot contains number!";
+            errorTooltip1.style.display = "inline";
+        }
+        // if in the right format, then set border to normal color
+        // and hide the error message
+        else {
+            firstName.style.border = "1px solid rgba(0, 0, 0, 0.197)";
+            errorTooltip1.style.display = "none";
+        }
+    })
+    // when user start input in value for first-name, error-tooltip will dissapear
+    firstName.addEventListener("keydown", function () {
+        errorTooltip1.style.display = "none";
+    })
+
+    // Last Name event handler
+    let lastName = document.getElementById("last-name");
+    let errorTooltip2 = document.getElementById("error-tooltip2");
+    lastName.addEventListener("blur", function () {
+        if (lastName.value.trim() === "") {
+            lastName.style.border = "2px solid rgba(255, 0, 0, 0.3)";
+            errorTooltip2.textContent = "*This field is required";
+            errorTooltip2.style.display = "inline";
+
+        // if the field contains a number, error message pop up 
+        // syntax is /\d/.test(variable)
+        } else if (/\d/.test(lastName.value.trim())) { 
+            lastName.style.border = "2px solid orange";
+            errorTooltip2.textContent = "Last name cannot contains number!";
+            errorTooltip2.style.display = "inline";       
+        }
+        // if in the right format, then set border to normal color
+        // and hide the error message
+        else {
+            lastName.style.border = "1px solid rgba(0, 0, 0, 0.197)";
+            errorTooltip2.style.display = "none";
+        }
+    })
+    // when user start input in value, error-tooltip will dissapear
+    lastName.addEventListener("keydown", function () {
+        errorTooltip2.style.display = "none";
+    })
+
+
+    // Email event handler
+    let email = document.getElementById("email");
+    let errorTooltip3 = document.getElementById("error-tooltip3");
+    email.addEventListener("blur", function () {
+        if (email.value.trim() === "") {
+            email.style.border = "2px solid rgba(255, 0, 0, 0.3)";
+            errorTooltip3.textContent = "*This field is required";
+            errorTooltip3.style.display = "inline";
+
+        // if the field not contain "@", error message pop up 
+        // 
+        } else if (!email.value.trim().includes("@")) { 
+            email.style.border = "2px solid orange";
+            errorTooltip3.textContent = "Incorrect email format!";
+            errorTooltip3.style.display = "inline";       
+        }
+        // if in the right format, then set border to normal color
+        // and hide the error message
+        else {
+            email.style.border = "1px solid rgba(0, 0, 0, 0.197)";
+            errorTooltip3.style.display = "none";
+        }
+    })
+    // when user start input in value, error-tooltip will dissapear
+    email.addEventListener("keydown", function () {
+        errorTooltip3.style.display = "none";
+    })
+
+
+    // Password event handler
+    let passwd = document.getElementById("password");
+    let errorTooltip5 = document.getElementById("error-tooltip5");
+    // Regular expression that contains special character in password
+    const specialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+    passwd.addEventListener("blur", function () {
+        if (passwd.value.trim() === "") {
+            passwd.style.border = "2px solid rgba(255, 0, 0, 0.3)";
+            errorTooltip5.textContent = "*This field is required";
+            errorTooltip5.style.display = "inline";
+
+        // if the field does not contain a special char, error message pop up 
+        } else if (!specialChar.test(passwd)) { 
+            passwd.style.border = "2px solid orange";
+            errorTooltip5.textContent = "Please include a special character!";
+            errorTooltip5.style.display = "inline";       
+        }
+        // if in the right format, then set border to normal color
+        // and hide the error message
+        else {
+            passwd.style.border = "1px solid rgba(0, 0, 0, 0.197)";
+            errorTooltip5.style.display = "none";
+        }
+    })
+    // when user start input in value, error-tooltip will dissapear
+    passwd.addEventListener("keydown", function () {
+        errorTooltip5.style.display = "none";
+    })
+
+    // Email event handler
+    let confPass = document.getElementById("confirm-password");
+    let errorTooltip6 = document.getElementById("error-tooltip6");
+    confPass.addEventListener("blur", function () {
+        if (confPass.value.trim() === "") {
+            confPass.style.border = "2px solid rgba(255, 0, 0, 0.3)";
+            errorTooltip6.textContent = "*This field is required";
+            errorTooltip6.style.display = "inline";
+
+        // if the field not contain "@", error message pop up 
+        // 
+        } else if (confPass.value !== passwd.value) { 
+            confPass.style.border = "2px solid orange";
+            errorTooltip6.textContent = "Password does not match!";
+            errorTooltip6.style.display = "inline";       
+        }
+        // if in the right format, then set border to normal color
+        // and hide the error message
+        else {
+            confPass.style.border = "1px solid rgba(0, 0, 0, 0.197)";
+            errorTooltip6.style.display = "none";
+        }
+    })
+    // when user start input in value, error-tooltip will dissapear
+    confPass.addEventListener("keydown", function () {
+        errorTooltip6.style.display = "none";
+    })
+
+    function togglePassword() {
+        confPass.type = confPass.type === "password" ? "text" : "password";
+        passwd.type = passwd.type === "password" ? "test" : "password";
+    }
+</script>
+</html>

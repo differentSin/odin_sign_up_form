@@ -1,0 +1,218 @@
+:root {
+    --indent: 10px 40px 20px 42vw;;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*
+    Sets the .background to inline-block so the
+    .login can inline to the right
+*/
+.background {
+    animation: bgSlide 30s infinite alternate;
+    display: inline-block;
+    float: left; 
+    /* background-image: url("./img/psychedelic_art.jpg"); */
+    height: 100vh;
+    width: 35vw;
+    background-size: 35vw 100vh;
+    background-position: center;
+
+}
+
+/* Transition animation */
+@keyframes bgSlide {
+    1% { background-image: url("./img/psychedelic_art.jpg"); }
+    25% { background-image: url("./img/apartment.jpg"); }
+    50% { background-image: url("./img/room.jpg"); }
+    75% { background-image: url("./img/cozy1.jpg"); }
+    100% { background-image: url("./img/winter.jpg");}
+}
+
+
+.back-flex {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+img {
+    margin-top: 10px;
+    width: 60px;
+    height: 34.5px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+#one {
+    align-self: center;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.41);
+    margin-bottom: 65vh;
+    padding: 10px;
+}
+
+
+#title {
+    font-size: 55px;
+    display: inline-block;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 0.847);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+
+}
+
+#two {
+    color: rgba(255, 255, 255, 0.722);
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+
+}
+
+
+.login {
+    display: block;
+    background-color: #222222;
+    font-size: 20px;
+    height: 36vh;
+}
+
+form {
+    padding: 10px 40px 20px 37.5vw;
+    font-size: 18px;
+    width: 70%;
+    margin: 10px;
+}
+
+
+td {
+    padding: 5px 5px 5px 0;
+    font-size: 16px;
+}
+
+
+
+.login-content {
+    padding: 22vh 100px 20px 38vw;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(210, 216, 216);
+}
+
+table {
+    width: 100%;
+}
+
+caption {
+    text-align: left;
+    margin-left: 2px;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+#create-account {
+    background-color: #0A1F44;
+    padding: 10px 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 180px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+}
+
+
+
+#later-half {
+    padding: 10px 40px 20px 38vw;
+    margin-top: 10px;
+    background-color: #F5F5F5;
+    width: 100%;
+    height: 320px;;
+    border-top: 2px solid rgba(0, 0, 0, 0.083);
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.197);
+    height: 25px;
+}
+
+footer > div {
+    display: block;
+    text-align: right;
+    background-color: #F5F5F5;
+    
+}
+
+.relative {
+    position: relative;
+}
+
+
+.error-tooltip {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 80px;
+    border: 1px solid orange;
+    border-radius: 4px;
+    width: 140px;
+    background-color:white;
+    font-size: 14px;
+    padding: 5px;
+    display: none;
+  }
+
+.error-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent transparent orange;
+}
+
+
+
+#toggle-password {
+    position: absolute;
+    transform: translateY(-70%);
+    background: none;
+    font-size: 16px;
+    background-color: white;
+}
+
+
+/* responsive design for screen under 1000px */
+@media screen and (max-width: 1200px) {
+    .login-content {
+        padding: 10vh 100px 20px 38vw;
+    }
+}
+
+/* responsive design for screen under 500px */
+@media screen and (max-width: 600px) {
+    .login-content {
+        padding: 5vh 100px 20px 38vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #title {
+        width: 20vw;
+        display: inline-block;
+        word-wrap: break-word;
+    }
+}
+
