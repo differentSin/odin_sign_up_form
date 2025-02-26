@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vantra Art: Sign In</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="preload" href="./img/psychedelic_art.jpg" as="image">
+    <link rel="preload" href="./img/cozy1.jpg" as="image">
+    <link rel="preload" href="./img/apartment.jpg" as="image">
+    <link rel="preload" href="./img/winter.jpg" as="image">
+    <link rel="preload" href="./img/room.jpg" as="image">
 </head>
 <body>
     <div class="background">
@@ -283,5 +288,17 @@
         confPass.type = confPass.type === "password" ? "text" : "password";
         passwd.type = passwd.type === "password" ? "test" : "password";
     }
+    // create a new Image object
+    var psychedelic_art = new Image();
+
+    // when preload is complete, apply the image to the div
+    psychedelic_art.onload = function() {
+
+        document.querySelector('.background').style.backgroundImage = 'url(' + img + ')';
+    }
+
+    // setting 'src' actually starts the preload
+    psychedelic_art.src = img;
+    
 </script>
 </html>
